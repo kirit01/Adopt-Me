@@ -1,0 +1,31 @@
+<%-include('partials/header') %>
+
+
+<div class="ui main text container segment">
+    <div class="ui huge header centered "><%=pet.pName%></div>
+    <div class=" ui top attached ">
+
+        <div class="item">
+            <img class="ui centered rounded image" src="<%=pet.pPic%>" alt="">
+        </div>       
+      
+            <p class="ui header"><%=pet.pName%></p>
+            <ul>
+                <li> Age:<%=pet.pAge%></li>
+                <li> Breed:<%=pet.pBreed%></li>
+                <li> Owner Name:<%=pet.pOwnerName%></li>
+                <li> Owner Number:<%=pet.pOwnerNumber%></li>
+                <li> Location:<%=pet.pLocation%></li>              
+            </ul>
+            <!-- Add edit path   -->
+            <div  id="delete">
+                <button class="ui violet basic button"><a href="/allpets/<%-pet._id%>/edit">EDIT</a></button>
+                <form action="/allpets/<%=pet._id%>?_method=DELETE" method="POST">   
+                <button class="ui red basic button">DELETE</button>
+              
+            </div>
+    </div>   
+</div>
+
+
+<%-include('partials/footer') %>

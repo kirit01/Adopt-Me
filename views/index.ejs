@@ -1,0 +1,22 @@
+<%-include('partials/header') %>
+<div class="home">
+    <h1>Adopt Me!/h1>
+
+    <div class="ui centered card ">
+        <%pets.forEach((pet)=>{ %>
+            <div class="image">
+                <img src="<%=pet.pPic%>">
+            </div>
+            <div class="content">
+                <a class="center aligned header" href="/allpets/<%-pet._id %>"><%=pet.pName%></a>
+            </div>
+            <div class="center aligned description">
+                <p>Age:<%=pet.pAge%></p>
+                <p><%=pet.created.toDateString()%></p>         
+            </div>
+        <%})%>
+    </div>
+</div>
+<div class="ui inverted segment">
+    <p>&#169 Copyright <a href="https://github.com/kirit01">  Shashank</a></p>
+</div>

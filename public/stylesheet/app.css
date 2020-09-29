@@ -1,0 +1,12 @@
+.ui.segment{
+    border-radius:0rem ;
+}
+
+.home{
+    text-align: center;
+}
+
+
+#delete{
+    display: -webkit-inline-box;
+}

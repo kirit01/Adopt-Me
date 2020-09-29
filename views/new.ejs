@@ -1,0 +1,67 @@
+<%-include('partials/header') %>
+
+<h1 class="ui centered">Add New Pet</h1>
+<div  class="ui inverted segment"> 
+        <form action="/allpets" method="POST">
+                <div class="ui inverted form"> 
+                        <div class="field">
+                            <label>Pet Name</label>
+                            <input type="text" name=pet[pName] placeholder="Enter pet name">
+                        </div>
+                </div>
+                <div class="ui inverted form">
+                    <div class="field">
+                        <label>Pet Age</label>
+                        <input type="text" name=pet[pAge] placeholder="Enter pet Age">
+                    </div> 
+                </div> 
+                    
+                <div class="ui inverted form">
+                    <div class="field">
+                        <label>Pet Image</label>
+                        <input type="text" name=pet[pPic] placeholder="Enter image url">                        
+                    </div>    
+                </div>    
+                    
+                <div class="ui inverted form">    
+                    <div class="field">
+                        <label>Pet Breed</label>
+                        <input type="text" name="pet[pBreed]" placeholder="Enter Pet Breed">
+                    </div>       
+                </div>
+
+                <div class="ui inverted form">    
+                    <div class="field">
+                        <label>Pet Owner Name</label>
+                        <input type="text" name="pet[pOwnerName]" placeholder="Enter Pet Owner Name">
+                    </div>       
+                </div>    
+               
+
+                <div class="ui inverted form">
+                <div class="field">
+                    <label>Pet Owner Number</label>
+                    <input type="text" name="pet[pOwnerNumber]" placeholder="Enter Pet Owner Number">
+                </div>
+
+                </div>
+                
+            
+                <div class="ui inverted form">
+                    <div class="field">
+                        <label>Pet Owner Location</label>
+                        <input type="text" name="pet[pLocation]" placeholder="Enter Pet Owner Location">
+                    </div>       
+                </div>    
+               
+                <div class="ui  inverted form">    
+                    <div class="field">
+                        <button class="ui submit button">Submit</button>
+                    </div>        
+                </div>         
+        </form>
+
+</div>
+<div class="ui inverted segment">
+    <p>&#169 Copyright <a href="https://github.com/kirit01">Shashank</a></p>
+</div>
