@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+body{
+    background: linear-gradient(to left, #000a15 0%, #f40056 100%);
+
+}
+
 
 #delete{
     display: -webkit-inline-box;
