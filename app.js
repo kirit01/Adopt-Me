@@ -9,6 +9,32 @@ var express = require("express"),
   methodOverride = require('method-override'),
   port = 3000;
 
+// ===========================================
+//  Authentication via passport 
+// ==========================================
+var passport=require(`passport`),
+passportLocalMongoose=require(`passport-local-mongoose`),
+LocalStrategy= require(`passport-local`),
+User=require(`./models/user`);
+
+//================================================================
+// using passport dependencies.
+// ============================================================
+app.use(require(`express-session`)({
+  secret:"rio is good boy",
+  resave:false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+// ===================================================================
+
 // Applying ejs to the folder so the we don't need to explicitly apply ejs at the end of file
 app.set("view engine", "ejs");
 // creating mongoose database
@@ -148,6 +174,50 @@ app.delete('/allpets/:id',(req,res)=>{
   Pet.findByIdAndRemove(req.params.id,(err)=>{
     err? res.redirect("/allpets"):res.redirect('/allpets');
   })
+});
+
+// =============================================================
+//  Register Route
+// =============================================================
+
+app.get(`/register`,(req,res)=>{
+res.render('register');
+});
+
+
+app.post(`/register`,(req,res)=>{
+User.register(new User({username:req.body.username}),req.body.password,(err,user)=>{
+  if(err){
+        console.log(err);
+        res.redirect(`/register`)
+  }
+  passport.authenticate(`local`)(req,res,()=>{
+    res.redirect(`/allpets`)
+  })
+
+})
+
+});
+
+
+// create login ( logic , middleware)
+
+app.get(`/login`,(req,res)=>{
+   res.render(`login`);
+})
+
+app.post(`/login`,passport.authenticate(`local`,{
+  successRedirect:`/allpets`,
+  failureRedirect:`/login`
+}),(req,res)=>{
+
+});
+// logout
+
+app.get(`/logout`,(req,res)=>{
+
+  req.logout();
+  res.redirect(`/allpets`)
 });
 
 
